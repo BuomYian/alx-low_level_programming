@@ -8,24 +8,25 @@
 
 int main(void)
 {
-	int ones;
-	int tens;
+	int i;
+	int j;
 
-	for (tens = '0'; tens <= '9'; tens++) /*increment tens*/
+	for (i = 10; i <= 19; i++)
 	{
-		for (ones = '0'; ones <= '9'; ones++) /*one's ten+1*/
+		for (j = 10; j <= 19; j++)
 		{
-			putchar(tens);
-			putchar(ones);
-
-			if (tens != '8' || ones != '9') /*print commas*/
+			if ((j % 10) > (i % 10))
 			{
-				putchar(',');
-				putchar(' ');
+				putchar((i % 10) + '0');
+				putchar((j % 10) + '0');
+				if (i != 18 || j != 19)
+				{
+					putchar(',');
+					putchar(' ');
+				}
 			}
 		}
 	}
 	putchar('\n');
-
 	return (0);
 }
