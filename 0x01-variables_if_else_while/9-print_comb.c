@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 /**
- *main - print 0-9 separated with commas, using putchar
- *Return: Always 0 (Success)
- */
-
+  *main - print 0-9 separated with commas, using putchar
+  *
+  *Return: Always returns 0 (Success)
+  */
 int main(void)
 {
-	int n = '0';
+	int n = 'o';
 
 	while (n <= '9')
 	{
@@ -20,6 +20,5 @@ int main(void)
 		n++;
 	}
 	putchar('\n');
-
 	return (0);
 }
