@@ -50,3 +50,5 @@ int print_sign(int n);
   *Return: int or int times negative
   */
 int _abs(int n);
+
+int print_last_digit(int);
