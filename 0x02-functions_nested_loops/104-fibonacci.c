@@ -1,31 +1,45 @@
 #include <stdio.h>
 
 /**
-  *main - main function
-  *
-  *Return: nothing
+  *main - print first 98 fibonacci numbers
+  *pointers, array/tables, or structures
+  *Return: 0;
   */
 int main(void)
 {
-	int counter = 2;
+	int counter, overflow;
+	unsigned long a = 1;
+	unsigned long b = 1;
+	unsigned long sum = 0;
+	long a_head, a_tail, b_head, b_tall, sum_head, sum_tail;
 
-	float a = 1;
-	float b = a + 1;
-	float c = a + b;
+	printf("1");
 
-	printf("%.0f, ", a);
-	printf("%.0f, ", b);
-	while (counter < 98)
+	for (counter = 2; counter < 93; counter++)
 	{
-		counter++;
-		printf("%.0f", c);
+		sum = a + b;
 		a = b;
-		b = c;
-		c = a + b;
-		if (counter < 98)
-		{
-			printf(", ");
-		}
+		b = sum;
+		printf(", %lu", sum);
+	}
+
+	a_head = a / 1000000000;
+	a_tail = a % 1000000000;
+	b_head = b / 1000000000;
+	b_tail = b % 1000000000;
+
+	for (; counter < 99; counter++)
+	{
+		overflow = (a_tail + b_tail) / 1000000000;
+		sum_tail = (a_tail + b_tail) - (1000000000 * overflow);
+		sum_head = (a_tail + b_head) + overflow;
+
+		printf(", %lu%lu", sum_head, sum_tail);
+
+		a_head = b_head;
+		a_tail = b_tail;
+		b_head = sum_head;
+		b_tail = sum_tail;
 	}
 	printf("\n");
 	return (0);
