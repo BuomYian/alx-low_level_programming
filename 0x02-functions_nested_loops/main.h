@@ -25,3 +25,12 @@ void print_alphabet_x10(void);
   *Return: 1 if true, 0 if false
   */
 int _islower(int c);
+
+/**
+  *_isalpha - main function
+  *
+  *@c: character to compare
+  *
+  *Return: 1 if true, 0 if false
+  */
+int _isalpha(int c);
