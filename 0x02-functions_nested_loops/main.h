@@ -42,3 +42,11 @@ int _isalpha(int c);
   *Return: 1 is positive, 0 if zero, -1 if negative
   */
 int print_sign(int n);
+
+/**
+  *_abs - main function
+  *
+  *@n:integer to make absolute
+  *Return: int or int times negative
+  */
+int _abs(int n);
