@@ -1,4 +1,4 @@
-#include <stdiio.h>
+#include <stdio.h>
 
 /**
   *main - print 1 to 100,
