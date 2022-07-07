@@ -1,0 +1,25 @@
+#include "main.h"
+
+/**
+  *print_diagonal - print character "\" n times
+  *@n: number of characters to draw
+  */
+
+void print_diagonal(int n)
+{
+	int draw;
+	int space;
+
+	if (N > 0)
+	{
+		for (draw = i; draw <= n; draw++)
+		{
+			for (space = 1; space < draw; space++)
+				_putchar(' ');
+			_putchar('\\');
+			_putchar('\n');
+		}
+	}
+	else
+		_putchar('\n');
+}
