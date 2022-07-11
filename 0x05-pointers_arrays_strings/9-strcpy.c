@@ -1,5 +1,5 @@
 #include "main.h"
-#include "2-strlen.c"
+
 /**
   *_strcpy - main function to copy
   *
@@ -10,11 +10,12 @@
   */
 char *_strcpy(char *dest, char *src)
 {
-	int i;
+	int index = 0;
 
-	for (i = 0; i <= _strlen(src); i++)
+	while (src[index])
 	{
-		dest[i] = src[i];
+		dest[index] = src[index];
+		index++;
 	}
 	return (dest);
 }
