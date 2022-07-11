@@ -1,5 +1,5 @@
 #include "main.h"
-#include "2-strlen.c"
+#include <string.h>
 
 /**
   *puts2 - Prints one char of two of a string.
