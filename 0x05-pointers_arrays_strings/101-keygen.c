@@ -14,7 +14,7 @@ int main(void)
 	sum = 0;
 	while (sum <= 2645)
 	{
-		pass = (srand() % 128);
+		pass = (rand() % 128);
 		sum += pass;
 		printf("%c", pass);
 	}
