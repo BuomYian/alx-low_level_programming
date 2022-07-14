@@ -1,23 +1,27 @@
 #include "main.h"
+
 /**
-* leet - function that encode a string
-*@str:string that will be encoded
-*Return:returns encoded string
-*/
-
-char *leet(char *str)
+  *leet - a leet function
+  *@x: param x
+  *Return: a string
+  */
+char *leet(char *x)
 {
-	int index1 = 0, index2;
-	char leet[8] = {'O', 'L', '?', 'E', 'A', '?', '?', 'T'};
+	int a = 0, b, l = 5;
+	char tr[5] = {'A'. 'E', 'O', 'T', 'L'};
+	char trw[5] = {'4', '3', '0', '7', '1'};
 
-	while (str[++index1])
+	while (x[a])
 	{
-		for (index2 = 0; index2 <= 7; index2++)
+		b = 0;
+
+		while (b < l)
 		{
-			if (str[index1] == leet[index2] ||
-			 str[index1] - 32 == leet[index2])
-				str[index1] = index2 + '0';
+			if (x[a] == tr[b] || x[a] - 32 == tr[b])
+				x[a] = trw[b];
+			b++;
 		}
+		a++;
 	}
-	return (str);
+	return (x);
 }
