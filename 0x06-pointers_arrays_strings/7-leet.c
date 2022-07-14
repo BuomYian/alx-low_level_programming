@@ -1,27 +1,36 @@
 #include "main.h"
-
 /**
-  *leet - a leet function
-  *@x: param x
-  *Return: a string
-  */
-char *leet(char *x)
+ *leet - encodes a string into 1337.
+ *letters a and A are replaced by 4.
+ *Letters e and E are replaced by 3
+ *Letters o and O are replaced by 0
+ *Letters t and T are replaced by 7
+ *Letters l and L are replaced by 1
+ *@s: pointer to string.
+ *
+ *Return: pointer to s.
+ */
+char *leet(char *s)
 {
-	int a = 0, b, l = 5;
-	char tr[5] = {'A'. 'E', 'O', 'T', 'L'};
-	char trw[5] = {'4', '3', '0', '7', '1'};
+	int stringCount, leetCount;
+	char leetLetters[] = "aAeEoOtTlL";
+	char leetNums[] = "4433007711";
 
-	while (x[a])
+/*  scan through string */
+	stringCount = 0;
+	while (s[stringCount] != '\0')
+/* check whether leetLetter is found */
 	{
-		b = 0;
-
-		while (b < l)
+		leetCount = 0;
+		while (leetCount < 10)
 		{
-			if (x[a] == tr[b] || x[a] - 32 == tr[b])
-				x[a] = trw[b];
-			b++;
+			if (leetLetters[leetCount] == s[stringCount])
+			{
+				s[stringCount] = leetNums[leetCount];
+			}
+			leetCount++;
 		}
-		a++;
+		stringCount++;
 	}
-	return (x);
+	return (s);
 }
