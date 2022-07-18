@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _strchr - locates character in string
  * @s: string to locate char
@@ -20,4 +19,4 @@ char *_strchr(char *s, char c)
 	if (s[i] == c)
 		return (s + i);
 	return (0);
-}i
+}
