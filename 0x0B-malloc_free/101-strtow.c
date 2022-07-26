@@ -1,85 +1,76 @@
-#include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 /**
- * helper - helps function
- * @word: wordcount
- * @len: length
- * @str: string to go through
- * @s: array you are assigning
- * Return: char value
+ * wordnos - counts no of words in a given string
+ * @s: pointer to the string
+ *
+ * Return: No. of words in the string (int)
  */
-char **helper(int word, int len, char *str, char **s)
+int wordnos(char *s)
 {
-	int i, k, j;
+	int flag, c, w;
 
-	j = 0;
-	for (i = 0; i < word; i++)
+	flag = 0;
+	w = 0;
+
+	for (c = 0; s[c] != '\0'; c++)
 	{
-		k = 0;
-		for (; j < len; j++)
+		if (s[c] == ' ')
+			flag = 0;
+		else if (flag == 0)
 		{
-			if (str[0] != ' ' || str[j] != ' ')
-			{
-				s[i][k] = str[j];
-				k++;
-			}
-			if (j != 0 && str[j] == ' ' && str[j - 1] != ' ')
-			{
-				j++;
-				break;
-			}
+			flag = 1;
+			w++;
 		}
-		s[i][k + 1] = '\0';
 	}
-	s[word + 1] = NULL;
-	return (s);
+
+	return (w);
 }
 /**
- * strtow - string to words
- * @str: string to check
- * Return: return char value
+ * **strtow - splits a string into words
+ * @str: string to split
+ *
+ * Return: pointer to an array of strings (Success)
+ * or NULL (Error)
  */
 char **strtow(char *str)
 {
-	int len, i, j, size, k, word;
-	char **s;
+	char **matrix, *tmp;
+	int i, k = 0, len = 0, words, c = 0, start, end;
 
-	if (str == NULL)
-		return (NULL);
-	len = 0;
-	word = 0;
-	while (str[len] != '\0')
-	{
-		if (str[0] != ' ')
-		word++;
-		if (str[len] != ' ' && str[len - 1] == ' ' && len != 0)
-			word++;
+	while (*(str + len))
 		len++;
-	}
-	s = (char **)malloc(sizeof(char *) * word + 1);
-	if (s == NULL)
+	words = wordnos(str);
+	if (words == 0)
 		return (NULL);
-	j = 0;
-	for (i = 0; i < word; i++)
+
+	matrix = (char **) malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
+		return (NULL);
+
+	for (i = 0; i <= len; i++)
 	{
-		size = 0;
-		for (; j < len; j++)
+		if (str[i] == ' ' || str[i] == '\0')
 		{
-			if (str[0] != ' ' || str[j] != ' ')
-				size++;
-			if (str[j] == ' ' && size > 0)
-				break;
+			if (c)
+			{
+				end = i;
+				tmp = (char *) malloc(sizeof(char) * (c + 1));
+				if (tmp == NULL)
+					return (NULL);
+				while (start < end)
+					*tmp++ = str[start++];
+				*tmp = '\0';
+				matrix[k] = tmp - c;
+				k++;
+				c = 0;
+			}
 		}
-		printf("%d\n", size);
-		s[i] = (char *)malloc(sizeof(char) * size + 1);
-		if (s[i] == NULL)
-		{
-			for (k = i - 1; k >= 0; k--)
-				free(s[k]);
-			free(s);
-		}
+		else if (c++ == 0)
+			start = i;
 	}
-	s = helper(word, len, str, s);
-	return (s);
+
+	matrix[k] = NULL;
+
+	return (matrix);
 }
