@@ -5,7 +5,7 @@
 /**
   *print_numbers - print numbers
   *@separator: item to use to separate numbers
-  @n: number of argument to sum
+  *@n: number of argument to sum
   *Return: numbers
   */
 void print_numbers(const char *separator, const unsigned int n, ...)
