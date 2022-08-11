@@ -1,48 +1,38 @@
 #include "lists.h"
+#include <string.h>
 
 /**
- * _strlen - find string length
- * @str: string
- * Return: length
- */
-int _strlen(const char *str)
-{
-	int len;
-
-	for (len = 0; str[len] != '\0'; len++)
-		;
-	return (len);
-}
-
-/**
- * add_node - add node to beginning of linked list
- * @head: linked list
- * @str: data for new node
- * Return: address of new element, or NULL if failed
+ * *add_node - adds a node to a linked list head
+ * @head: linked list head
+ * @str: string element of the linked list
+ * Return: number of elements
  */
 
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *new_node; /* create new node */
+	list_t *new_node;
+	int len_str;
 
-	if (str == NULL) /* validate input */
-		return (NULL);
-	if (strdup(str) == NULL) /*check if strdup malloc errored */
-		return (NULL);
+	new_node = (list_t *) malloc(sizeof(list_t));
 
-	new_node = malloc(sizeof(list_t)); /* malloc for new node */
 	if (new_node == NULL)
+	{
+		free(new_node);
 		return (NULL);
+	}
 
-	new_node->str = strdup(str); /* set node values */
-	new_node->len = _strlen(str);
+	new_node->str = strdup(str);
+	if (new_node->str == NULL)
+	{
+		free(new_node);
+		return (NULL);
+	}
+	for (len_str = 0; str[len_str] != '\0';  len_str++)
+	;
 
-	if (head == NULL) /* set what new node points to first */
-		new_node->next = NULL;
-	else
-		new_node->next = *head;
-
-	*head = new_node; /* set head to point to new node */
+	new_node->len = len_str;
+	new_node->next = *head;
+	*head = new_node;
 
 	return (new_node);
 }
