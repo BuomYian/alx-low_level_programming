@@ -4,6 +4,7 @@
 /**
   *set_bit - sets a bit
   *@n: integer to grap
+  *@index: index of the bit
   *Return: 1 if it works or -1 if an error occurred
   */
 int set_bit(unsigned long int *n, unsigned int index)
