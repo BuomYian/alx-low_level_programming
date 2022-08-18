@@ -2,8 +2,8 @@
 #include "main.h"
 
 /**
-  *binary_to_unit - convert binary to unsigned int
-  *@c: pointer to be converted
+  *binary_to_uint - convert binary to unsigned int
+  *@b: pointer to be converted
   *Return: the converted number or 0 if
   *more than one string in b that is not 0 or 1
   *b is NULL
@@ -22,5 +22,5 @@ unsigned int binary_to_uint(const char *b)
 		val += b[i] - '0';
 		i++;
 	}
-	return val;
+	return (val);
 }
